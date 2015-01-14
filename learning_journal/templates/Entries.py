@@ -5,25 +5,29 @@ __author__ = 'DarcyElizabeth'
 #It should be stored in a database table called entries
 #It should have a primary key field called id
 #It should have a title field which accepts unicode text up to 255 characters in length
-#****The title should be unique and it should be impossible to save an entry without a title.
-#***It should have a body field which accepts unicode text of any length (including none)
+#The title should be unique and it should be impossible to save an entry without a title.
+#It should have a body field which accepts unicode text of any length (including none)
 #****It should have a created field which stores the date and time the object was created.
 #****It should have an edited field which stores the date and time the object was last edited.
-#****Both the created and edited field should default to now if not provided when a new instance
+#Both the created and edited field should default to now if not provided when a new instance
 #is constructed.
 #The entry class should support a classmethod all that returns all the entries in the database, ordered so that the most recent entry is first.
 #The entry class should support a classmethod by_id that returns a single entry, given an id.
 
 import sqlalchemy as sa
+import Datetime
+
+def now():
+	return datetime.datetime.now()
 
 class Entry(Base):
 	"""define a data model for the learning journal"""
 	__tablename__ = 'Entries'
-    id = sa.Column(integer, primary_key = True)
-	title = sa.Column(Unicode(255),nullable = False, unique = True)
-	body_text = sa.Column(Unicode(None),nullable = False length = None)
-	date_created = sa.Column(Datetime())
-    date_ edited = sa.Column(Datetime())
+    id = sa.Column(types.integer, primary_key = True)
+	title = sa.Column(types.Unicode(255),nullable = False, unique = True, default = u'Untitled Page')
+	body_text = sa.Column(types.Unicode(None),nullable = False length = None)
+	date_created = sa.Column(types.Datetime(), default = now)
+    date_ edited = sa.Column(types.Datetime(), default = now)
     Index('my_index', MyModel.name, unique=True, mysql_length=255)
 
 	def all():
@@ -37,6 +41,3 @@ class Entry(Base):
 	    k = DBSession.query(Entry.id)
 		return k
 
-
-
-	__table_args__ = ('title', 'body', 'created', 'edited')
