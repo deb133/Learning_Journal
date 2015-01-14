@@ -23,7 +23,7 @@ def now():
 class Entry(Base):
 	"""define a data model for the learning journal"""
 	__tablename__ = 'Entries'
-    id = sa.Column(types.integer, primary_key = True)
+	id = sa.Column(types.integer, primary_key = True)
 	title = sa.Column(types.Unicode(255),nullable = False, unique = True, default = u'Untitled Page')
 	body_text = sa.Column(types.Unicode(None),nullable = False length = None)
 	date_created = sa.Column(types.Datetime(), default = now)
