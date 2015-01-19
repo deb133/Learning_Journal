@@ -58,6 +58,20 @@ class Entry(Base):
         return session.query(cls).get(id)
 
 
+class User(Base):
+    __tablename__ = 'users'
+    id = column(integer, primary_key = True)
+    username = column(Unicode(255), nullable = False, unique = False, indexed = False)
+    password = Column(UnicodeText, nullable = False)
+
+    @classmethod
+    def get_user(cls, session = None):
+        """get specific user for a specific username"""
+        if session is None:
+            session = DBSession
+        return session.query(cls).get(username)
+
+
 
 
 
