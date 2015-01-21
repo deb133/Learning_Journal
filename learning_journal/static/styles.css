@@ -1,15 +1,15 @@
 body{
-    color:#111;
+    color:#00ff00;
     padding:0;
     margin:0;
-    background-color: #0f0;}
+    background-color: #ccc;}
 header{
     margin:0;
-    padding:0 0.75em;
+    padding:0 1.00em;
     width:100%;
-    background: #203;
-    color: #0f0;
-    border-bottom: 3px solid #fff;}
+    background: #0000ff;
+    color: #ffffff;
+    border-bottom: 3px solid #000000;}
 header:after{
     content:"";
     display:table;
@@ -19,33 +19,33 @@ footer a{
     text-decoration:none}
 header a:hover,
 footer a:hover {
-    color:#ccc;
+    color:#0000ff;
 }
 header a:visited,
 footer a:visited {
-    color:#f33;
+    color:#0000ff;
 }
 header aside{
     float:right;
-    text-align:right;
-    padding-right:0.75em}
+    text-align:center;
+    padding-right:1.00em}
 header ul{
     list-style:none;
     list-style-type:none;
     display:inline-block}
 header ul li{
-    margin:0 0.25em 0 0}
+    margin:0 1.00em 0 0}
 header ul li a{
     padding:0;
     display:inline-block}
-main{padding:0 0.75em 1em}
+main{padding:0 1.00em 1em}
 main:after{
     content:"";
     display:table;
     clear:both}
 main article{
     margin-bottom:1em;
-    padding-left:0.5em}
+    padding-left:1.00em}
 main article h3{margin-top:0}
 main article .entry_body{
     margin:0.5em}
@@ -66,8 +66,8 @@ main aside .field textarea{
 main aside .control_row input{
     margin-left:16%}
 footer{
-    padding: 1em 0.75em;
-    background: #222;
-    color: #ccc;
-    border-top: 3px solid #f33;
-    border-bottom: 3px solid #f33;}
+    padding: 1em 1.00em;
+    background: #0000ff;
+    color: #ffffff;
+    border-top: 3px solid #000000;
+    border-bottom: 3px solid #000000;}

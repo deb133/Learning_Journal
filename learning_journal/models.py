@@ -9,6 +9,9 @@ from sqlalchemy import (
     UnicodeText,
     )
 
+# from cryptacular.pbkdf2 import PBKDF2PasswordManager as Manager
+from cryptacular.bcrypt import BCRYPTPasswordManager as Manager
+
 import sqlalchemy as sa
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -60,16 +63,19 @@ class Entry(Base):
 
 class User(Base):
     __tablename__ = 'users'
-    id = Column(Integer, primary_key = True)
-    username = Column(Unicode(255), nullable = False, unique = False)
-    password = Column(UnicodeText, nullable = False)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(Unicode(255), unique=True, nullable=False)
+    password = Column(Unicode(255), nullable=False)
 
     @classmethod
-    def get_user(cls, session = None):
-        """get specific user for a specific username"""
+    def by_name(cls, name, session=None):
         if session is None:
             session = DBSession
-        return session.query(cls).get(username)
+        return DBSession.query(User).filter(User.name == name).first()
+
+    def verify_password(self, password):
+        manager = Manager()
+        return manager.check(self.password, password)
 
 
 
