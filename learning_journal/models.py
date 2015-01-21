@@ -60,8 +60,8 @@ class Entry(Base):
 
 class User(Base):
     __tablename__ = 'users'
-    id = column(integer, primary_key = True)
-    username = column(Unicode(255), nullable = False, unique = False, indexed = False)
+    id = Column(Integer, primary_key = True)
+    username = Column(Unicode(255), nullable = False, unique = False)
     password = Column(UnicodeText, nullable = False)
 
     @classmethod
